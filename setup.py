@@ -2,12 +2,15 @@ from __future__ import print_function
 import sys
 import setuptools
 
-blacklist = ('register', 'upload')
+private_project = False
 
-for command in blacklist:
-    if command in sys.argv:
-        print('Command "%s" has been blacklisted, exiting.' % command, file=sys.stderr)
-        sys.exit(2)
+if private_project:
+    blacklist = ('register', 'upload')
+
+    for command in blacklist:
+        if command in sys.argv:
+            print('Command "%s" has been blacklisted, exiting.' % command, file=sys.stderr)
+            sys.exit(2)
 
 requirements = ["python-gnupg"]
 
