@@ -17,4 +17,15 @@ class GPGPublicKey(object):
         return "GPGPublicKey<0x%s>" % self.short_fingerprint
 
     def __eq__(self, other):
-        return self.long_fingerprint == other.long_fingerprint
+        if isinstance(other, GPGPublicKey):
+            return self.long_fingerprint == other.long_fingerprint
+        else:
+            try:
+                if other.startswith('0x'):
+                    other = other[2:]
+                if len(other) == 8:
+                    return self.short_fingerprint == other
+                else:
+                    return self.long_fingerprint == other
+            except AttributeError:
+                raise TypeError("Can't compare with %s" % other)
