@@ -16,7 +16,7 @@ class ChallengeTest(unittest.TestCase):
 
     def test_custom_word_list(self):
         timestamp = datetime.datetime(year=2017, month=1, day=1, hour=12)
-        self.assertEqual(generate_challenge('test', timestamp=timestamp, word_list='sometimes i love to write python code but other times it is literally the worst thing ever'.split()), 'worst is python i')
+        self.assertEqual(generate_challenge('test', timestamp=timestamp, word_list='sometimes i love to write python code but other times it is literally the worst thing ever'.split()), 'worst is is love')
 
     def test_custom_word_count(self):
         timestamp = datetime.datetime(year=2017, month=1, day=1, hour=12)
